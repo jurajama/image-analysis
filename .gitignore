@@ -1,0 +1,21 @@
+# Python virtual environment
+venv/
+
+# Python bytecode
+__pycache__/
+*.pyc
+
+# YOLO model weights
+*.pt
+
+# Image files
+*.jpg
+*.jpeg
+*.png
+
+# Ultralytics runs/output
+runs/
+
+# Claude Code local settings
+.claude/
+
