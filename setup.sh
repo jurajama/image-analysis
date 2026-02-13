@@ -27,7 +27,7 @@ echo
 echo "[3/3] Installing Python packages..."
 source "$VENV_DIR/bin/activate"
 pip install --upgrade pip
-pip install ultralytics opencv-python-headless pillow
+pip install ultralytics opencv-python-headless pillow flask
 echo
 
 echo "=== Setup complete ==="
