@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - '**'
+    paths:
+      - 'Dockerfile'
+      - 'web_server.py'
 
 jobs:
   build-and-push:
