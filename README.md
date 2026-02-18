@@ -77,6 +77,30 @@ curl -X POST -F "image=@20260213_115233.jpg" http://localhost:8080/detect
 
 Uploaded images are saved to `uploads/` and annotated results to `results/`.
 
+### Docker
+
+A pre-built image is available from the GitHub Container Registry. No local installation required.
+
+**Pull the image:**
+
+```bash
+docker pull ghcr.io/jurajama/image-analysis:latest
+```
+
+**Run the web server:**
+
+```bash
+docker run -d -p 3000:8080 ghcr.io/jurajama/image-analysis:latest
+```
+
+The web interface is then available at `http://localhost:3000`.
+
+You can also test with curl:
+
+```bash
+curl -X POST -F "image=@20260213_115233.jpg" http://localhost:3000/detect
+```
+
 ## Configuration
 
 | Parameter | Value | Description |
