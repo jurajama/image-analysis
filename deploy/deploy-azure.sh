@@ -97,11 +97,16 @@ az container create \
 
 # ── Wait for running state ────────────────────────────────────────────────────
 echo "Waiting for container to reach 'Running' state (up to 120 s)..."
-az container wait \
-    --resource-group "${RESOURCE_GROUP}" \
-    --name "${CONTAINER_NAME}" \
-    --condition "instanceView.state=='Running'" \
-    --timeout 120
+for i in {1..24}; do
+    state=$(az container show \
+        --resource-group "${RESOURCE_GROUP}" \
+        --name "${CONTAINER_NAME}" \
+        --query "instanceView.state" \
+        --output tsv 2>/dev/null || echo "Unknown")
+    echo "  [${i}] State: ${state}"
+    if [[ "${state}" == "Running" ]]; then break; fi
+    sleep 5
+done
 
 # ── Print access URL ──────────────────────────────────────────────────────────
 FQDN=$(az container show \
